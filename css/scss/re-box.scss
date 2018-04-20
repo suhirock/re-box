@@ -1,0 +1,134 @@
+@charset "UTF-8";
+/**
+ * re-box css
+ */
+
+ @keyframes re-box_show{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+
+.re-box__bgLayer{
+  /*
+  display: none;
+  */
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,.7);
+  transition: all .5s;
+}
+.re-box__bgLayer.overlay{
+  /*
+  display: block;
+  animation: re-box_show .3s ease;
+  */
+  visibility: visible;
+  opacity: 1;
+}
+
+.re-box__imgbox{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  /*
+  display: none;
+  */
+  transition: all .5s;
+  visibility: hidden;
+  opacity: 0;
+}
+.re-box__imgbox.overlay{
+  /*
+  display: block;
+  animation: re-box_show .3s ease;
+  */
+  visibility: visible;
+  opacity: 1;
+}
+.re-box__imgboxInner{
+  position: relative;
+  width: 300%;
+  top: 0;
+  left: -100%;
+  min-height: 100%;
+}
+.re-box__imgboxInner li{
+  width: calc(100% / 3);
+  position: absolute;
+  transition: .5s ease-out;
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+}
+.re-box__imgboxInner li img{
+  width: 100%;
+  height: auto;
+}
+.re-box__imgboxInner li:nth-child(1){
+  left: 0;
+}
+.re-box__imgboxInner li:nth-child(2){
+  left: calc(100% / 3);
+}
+.re-box__imgboxInner li:nth-child(3){
+  left: calc(100% / 3 * 2);
+}
+.re-box__imgboxInner li img{
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  cursor: pointer;
+}
+.re-box__arrow{
+  position: fixed;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  display: block;
+  z-index: 12;
+}
+.re-box__arrow span{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.re-box__arrow span::before{
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: black;
+  border-radius: 50%;
+  transition: .3s;
+}
+.re-box__arrow:hover span::before{
+  width: 100%;
+  height: 100%;
+}
+.re-box__arrow.re-box__prev{
+  left: 20px;
+}
+.re-box__arrow.re-box__next{
+  right: 20px;
+}
